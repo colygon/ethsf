@@ -6,9 +6,11 @@ import { ThemeSwitcher } from "@/components/theme/ThemeSwitcher";
 const navLinks = [
   { href: "/events", label: "Events" },
   { href: "/archive", label: "Archive" },
-  { href: "/companies", label: "Companies" },
+  { href: "/directory", label: "Directory" },
+  { href: "/companies", label: "Alliance" },
   { href: "/in-town", label: "In Town" },
-  { href: "/about", label: "About" },
+  { href: "/governance", label: "Governance" },
+  { href: "/get-involved", label: "Get Involved" },
 ];
 
 export function Header() {

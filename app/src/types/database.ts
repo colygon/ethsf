@@ -5,6 +5,8 @@ export type PresenceType = "office" | "founder" | "team";
 export type MembershipStatus = "loi" | "active" | "expired";
 export type BountyCategory = "testing" | "content" | "events_av" | "outreach" | "development" | "design";
 export type BountyStatus = "open" | "claimed" | "in_review" | "completed" | "paid";
+export type SecretariatLevel = "country" | "regional" | "ecosystem";
+export type ActionType = "approve_event" | "reject_event" | "verify_member" | "onboard_company";
 
 export interface Database {
   public: {
@@ -33,6 +35,11 @@ export interface Database {
           role: UserRole;
           skills: string[];
           links: Record<string, string> | null;
+          secretariat_level: SecretariatLevel | null;
+          term_start: string | null;
+          term_end: string | null;
+          nominated_by: string | null;
+          mentoring: string[];
           verified_at: string | null;
           created_at: string;
         };
@@ -158,6 +165,35 @@ export interface Database {
         };
         Insert: Omit<Database["public"]["Tables"]["bounties"]["Row"], "id" | "created_at" | "status"> & { status?: BountyStatus };
         Update: Partial<Database["public"]["Tables"]["bounties"]["Insert"]>;
+      };
+      programs: {
+        Row: {
+          id: string;
+          name: string;
+          slug: string;
+          description: string | null;
+          frequency: string | null;
+          program_type: string | null;
+          city_id: string;
+          lead_user_id: string | null;
+          active: boolean;
+          created_at: string;
+        };
+        Insert: Omit<Database["public"]["Tables"]["programs"]["Row"], "id" | "created_at" | "active"> & { active?: boolean };
+        Update: Partial<Database["public"]["Tables"]["programs"]["Insert"]>;
+      };
+      steward_actions: {
+        Row: {
+          id: string;
+          steward_id: string;
+          action_type: ActionType;
+          target_type: string;
+          target_id: string;
+          note: string | null;
+          created_at: string;
+        };
+        Insert: Omit<Database["public"]["Tables"]["steward_actions"]["Row"], "id" | "created_at">;
+        Update: Partial<Database["public"]["Tables"]["steward_actions"]["Insert"]>;
       };
     };
   };
