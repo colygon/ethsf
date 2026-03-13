@@ -1,0 +1,220 @@
+@import "tailwindcss";
+
+/* ============================================================
+   ETHEREUM SF — THEME SYSTEM
+
+   IMPORTANT: :root MUST come first so [data-theme] selectors
+   override it. All [data-theme] selectors have equal specificity
+   to :root but come later, so they win.
+   ============================================================ */
+
+/* --- Fallback: Block Party as default (before any data-theme is set) --- */
+:root {
+  --th-bg: #09090b;
+  --th-surface: #18181b;
+  --th-border: #3f3f46;
+  --th-text-primary: #fafafa;
+  --th-text-secondary: #a1a1aa;
+  --th-accent: #ef4444;
+  --th-accent-alt: #facc15;
+  --th-accent-warm: #10b981;
+  --th-status-ok: #10b981;
+  --th-status-warn: #facc15;
+  --th-status-error: #ef4444;
+  --th-font-heading: var(--font-space-grotesk), sans-serif;
+  --th-font-body: var(--font-dm-sans), sans-serif;
+  --th-font-mono: var(--font-space-mono), monospace;
+  --th-radius-card: 12px;
+  --th-radius-tag: 6px;
+  --th-card-shadow: 0 0 0 1px rgba(255,255,255,0.06), 0 4px 16px rgba(0,0,0,0.4);
+  --th-hero-gradient: linear-gradient(135deg, #ef444422 0%, #facc1511 50%, #10b98111 100%);
+}
+
+/* --- Theme: Terminal --- */
+[data-theme="terminal"] {
+  --th-bg: #050505;
+  --th-surface: #161616;
+  --th-border: #2e2e2e;
+  --th-text-primary: #d4d4d4;
+  --th-text-secondary: #737373;
+  --th-accent: #a78bfa;
+  --th-accent-alt: #34d399;
+  --th-accent-warm: #fbbf24;
+  --th-status-ok: #34d399;
+  --th-status-warn: #fbbf24;
+  --th-status-error: #f87171;
+  --th-font-heading: var(--font-jetbrains-mono), monospace;
+  --th-font-body: var(--font-inter), sans-serif;
+  --th-font-mono: var(--font-jetbrains-mono), monospace;
+  --th-radius-card: 4px;
+  --th-radius-tag: 2px;
+  --th-card-shadow: 0 0 0 1px rgba(255,255,255,0.04);
+  --th-hero-gradient: linear-gradient(135deg, #a78bfa22 0%, transparent 50%);
+}
+
+/* --- Theme: Neighborhood --- */
+[data-theme="neighborhood"] {
+  --th-bg: #f7f4ef;
+  --th-surface: #ffffff;
+  --th-border: #ddd5c8;
+  --th-text-primary: #1c1917;
+  --th-text-secondary: #78716c;
+  --th-accent: #ea580c;
+  --th-accent-alt: #0d9488;
+  --th-accent-warm: #ca8a04;
+  --th-status-ok: #0d9488;
+  --th-status-warn: #ca8a04;
+  --th-status-error: #dc2626;
+  --th-font-heading: var(--font-fraunces), serif;
+  --th-font-body: var(--font-source-sans), sans-serif;
+  --th-font-mono: var(--font-dm-sans), sans-serif;
+  --th-radius-card: 16px;
+  --th-radius-tag: 999px;
+  --th-card-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 12px rgba(0,0,0,0.04);
+  --th-hero-gradient: linear-gradient(135deg, #ea580c11 0%, #0d948811 100%);
+}
+
+/* --- Theme: Protocol --- */
+[data-theme="protocol"] {
+  --th-bg: #f1f5f9;
+  --th-surface: #ffffff;
+  --th-border: #cbd5e1;
+  --th-text-primary: #0f172a;
+  --th-text-secondary: #475569;
+  --th-accent: #2563eb;
+  --th-accent-alt: #7c3aed;
+  --th-accent-warm: #d97706;
+  --th-status-ok: #16a34a;
+  --th-status-warn: #ca8a04;
+  --th-status-error: #dc2626;
+  --th-font-heading: var(--font-inter), sans-serif;
+  --th-font-body: var(--font-inter), sans-serif;
+  --th-font-mono: var(--font-fira-code), monospace;
+  --th-radius-card: 12px;
+  --th-radius-tag: 6px;
+  --th-card-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 2px 8px rgba(0,0,0,0.06);
+  --th-hero-gradient: linear-gradient(135deg, #2563eb11 0%, #7c3aed11 100%);
+}
+
+/* --- Theme: Block Party --- */
+[data-theme="blockparty"] {
+  --th-bg: #09090b;
+  --th-surface: #18181b;
+  --th-border: #3f3f46;
+  --th-text-primary: #fafafa;
+  --th-text-secondary: #a1a1aa;
+  --th-accent: #ef4444;
+  --th-accent-alt: #facc15;
+  --th-accent-warm: #10b981;
+  --th-status-ok: #10b981;
+  --th-status-warn: #facc15;
+  --th-status-error: #ef4444;
+  --th-font-heading: var(--font-space-grotesk), sans-serif;
+  --th-font-body: var(--font-dm-sans), sans-serif;
+  --th-font-mono: var(--font-space-mono), monospace;
+  --th-radius-card: 12px;
+  --th-radius-tag: 6px;
+  --th-card-shadow: 0 0 0 1px rgba(255,255,255,0.06), 0 4px 16px rgba(0,0,0,0.4);
+  --th-hero-gradient: linear-gradient(135deg, #ef444422 0%, #facc1511 50%, #10b98111 100%);
+}
+
+/* ============================================================
+   Tailwind v4 @theme inline — resolves at runtime
+   ============================================================ */
+
+@theme inline {
+  --color-bg: var(--th-bg);
+  --color-surface: var(--th-surface);
+  --color-border: var(--th-border);
+  --color-primary: var(--th-text-primary);
+  --color-secondary: var(--th-text-secondary);
+  --color-accent: var(--th-accent);
+  --color-accent-alt: var(--th-accent-alt);
+  --color-accent-warm: var(--th-accent-warm);
+  --color-status-ok: var(--th-status-ok);
+  --color-status-warn: var(--th-status-warn);
+  --color-status-error: var(--th-status-error);
+
+  --font-heading: var(--th-font-heading);
+  --font-body: var(--th-font-body);
+  --font-mono: var(--th-font-mono);
+
+  --radius-card: var(--th-radius-card);
+  --radius-tag: var(--th-radius-tag);
+}
+
+/* ============================================================
+   BASE STYLES — inside @layer base so they don't override
+   Tailwind's @layer utilities
+   ============================================================ */
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--th-bg);
+    color: var(--th-text-primary);
+    font-family: var(--th-font-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* ============================================================
+   CARD & COMPONENT STYLES
+   ============================================================ */
+
+@layer components {
+.ethsf-card {
+  background-color: var(--th-surface);
+  border: 1px solid var(--th-border);
+  border-radius: var(--th-radius-card);
+  box-shadow: var(--th-card-shadow);
+  padding: 1.25rem;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.ethsf-card:hover {
+  border-color: var(--th-accent);
+}
+
+.ethsf-card-accent-meetup { border-left: 3px solid var(--th-accent); }
+.ethsf-card-accent-ddd { border-left: 3px solid var(--th-accent-alt); }
+.ethsf-card-accent-vibe { border-left: 3px solid var(--th-accent-warm); }
+.ethsf-card-accent-hackathon { border-left: 3px solid #a855f7; }
+.ethsf-card-accent-workshop { border-left: 3px solid var(--th-accent); }
+.ethsf-card-accent-social { border-left: 3px solid var(--th-accent-warm); }
+
+.ethsf-hero {
+  background: var(--th-hero-gradient);
+  border: 1px solid var(--th-border);
+  border-radius: var(--th-radius-card);
+  padding: 3rem 2.5rem;
+  margin-bottom: 3rem;
+}
+
+.ethsf-header {
+  background-color: var(--th-surface);
+  border-bottom: 1px solid var(--th-border);
+}
+
+} /* end @layer components */
+
+/* Scrollbar styling for dark themes */
+[data-theme="terminal"] ::-webkit-scrollbar,
+[data-theme="blockparty"] ::-webkit-scrollbar {
+  width: 8px;
+}
+
+[data-theme="terminal"] ::-webkit-scrollbar-track,
+[data-theme="blockparty"] ::-webkit-scrollbar-track {
+  background: var(--th-bg);
+}
+
+[data-theme="terminal"] ::-webkit-scrollbar-thumb,
+[data-theme="blockparty"] ::-webkit-scrollbar-thumb {
+  background: var(--th-border);
+  border-radius: 4px;
+}
