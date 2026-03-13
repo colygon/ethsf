@@ -59,9 +59,9 @@ const sampleCompanies = [
   "Frontier Tower",
   "Homebrew",
   "The House by Edge & Node",
-  "OpenRouter",
-  "Cline",
-  "Nebius",
+  "Ethereum Foundation",
+  "Kleidi Wallet",
+  "Cookbook",
 ];
 
 export default function Home() {
