@@ -55,9 +55,10 @@ const sampleRecordings = [
 ];
 
 const sampleCompanies = [
+  "Ethereum House",
   "Frontier Tower",
   "Homebrew",
-  "House of Web3",
+  "The House by Edge & Node",
   "OpenRouter",
   "Cline",
   "Nebius",
@@ -95,7 +96,7 @@ export default function Home() {
           <p className="text-xs text-secondary mt-0.5">recordings</p>
         </div>
         <div>
-          <p className="font-[family-name:var(--font-heading)] text-2xl font-bold text-primary">6</p>
+          <p className="font-[family-name:var(--font-heading)] text-2xl font-bold text-primary">7</p>
           <p className="text-xs text-secondary mt-0.5">alliance members</p>
         </div>
         <div>

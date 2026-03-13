@@ -4,12 +4,23 @@ import { Button } from "@/components/ui/Button";
 
 const companies = [
   {
+    slug: "ethereum-house",
+    name: "Ethereum House",
+    description: "A home for the Ethereum community in San Francisco. Events, gatherings, and builder culture.",
+    presence: "office",
+    teamSize: null,
+    website: "#",
+    twitter: "ethereumhousesf",
+    status: "active",
+  },
+  {
     slug: "frontier-tower",
     name: "Frontier Tower",
     description: "Community space and event venue in the heart of SF's crypto district. Home to builders, hackers, and dreamers.",
     presence: "office",
     teamSize: 12,
     website: "#",
+    twitter: "frontiertower",
     status: "active",
   },
   {
@@ -19,15 +30,17 @@ const companies = [
     presence: "office",
     teamSize: 8,
     website: "#",
+    twitter: "club_homebrew",
     status: "active",
   },
   {
-    slug: "house-of-web3",
-    name: "House of Web3",
+    slug: "the-house",
+    name: "The House by Edge & Node",
     description: "Coworking and event space for the Web3 community in SF. Regular hackathons and demo days.",
     presence: "office",
     teamSize: 6,
     website: "#",
+    twitter: "thehousesf",
     status: "active",
   },
   {
@@ -37,6 +50,7 @@ const companies = [
     presence: "team",
     teamSize: 15,
     website: "#",
+    twitter: null,
     status: "active",
   },
   {
@@ -46,6 +60,7 @@ const companies = [
     presence: "team",
     teamSize: 10,
     website: "#",
+    twitter: null,
     status: "active",
   },
   {
@@ -55,6 +70,7 @@ const companies = [
     presence: "team",
     teamSize: 20,
     website: "#",
+    twitter: null,
     status: "active",
   },
 ];
@@ -97,13 +113,105 @@ export default function CompaniesPage() {
             </p>
             <div className="flex items-center gap-2 mt-3">
               <Badge variant="alt">{presenceLabels[company.presence]}</Badge>
-              <span className="text-xs text-secondary">
-                {company.teamSize} people
-              </span>
+              {company.teamSize && (
+                <span className="text-xs text-secondary">
+                  {company.teamSize} people
+                </span>
+              )}
             </div>
+            {company.twitter && (
+              <a
+                href={`https://x.com/${company.twitter}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs text-accent hover:underline mt-2 inline-block"
+              >
+                @{company.twitter}
+              </a>
+            )}
           </Card>
         ))}
       </div>
+
+      {/* Community & Alliance Twitter Feed */}
+      <section className="mt-14">
+        <h2 className="font-[family-name:var(--font-heading)] text-2xl font-bold text-primary mb-6">
+          From the Community
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {/* Ethereum SF — pinned first */}
+          <Card className="md:col-span-2">
+            <div className="flex items-center gap-3 mb-3">
+              <div className="w-9 h-9 rounded-full flex items-center justify-center shrink-0"
+                style={{ backgroundColor: "var(--th-accent)", opacity: 0.15 }}>
+                <span className="font-[family-name:var(--font-mono)] text-xs font-bold"
+                  style={{ color: "var(--th-accent)" }}>
+                  E
+                </span>
+              </div>
+              <div>
+                <p className="font-[family-name:var(--font-heading)] text-sm font-semibold text-primary">
+                  Ethereum SF
+                </p>
+                <a
+                  href="https://x.com/ethereumsf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs text-secondary hover:text-accent transition-colors"
+                >
+                  @ethereumsf
+                </a>
+              </div>
+            </div>
+            <a
+              href="https://x.com/ethereumsf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block text-sm text-secondary hover:text-primary transition-colors"
+            >
+              View latest posts &rarr;
+            </a>
+          </Card>
+
+          {/* Alliance member feeds */}
+          {companies
+            .filter((c) => c.twitter)
+            .map((company) => (
+              <Card key={company.slug + "-feed"}>
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-9 h-9 rounded-full flex items-center justify-center shrink-0"
+                    style={{ backgroundColor: "var(--th-accent)", opacity: 0.15 }}>
+                    <span className="font-[family-name:var(--font-mono)] text-xs font-bold"
+                      style={{ color: "var(--th-accent)" }}>
+                      {company.name[0]}
+                    </span>
+                  </div>
+                  <div>
+                    <p className="font-[family-name:var(--font-heading)] text-sm font-semibold text-primary">
+                      {company.name}
+                    </p>
+                    <a
+                      href={`https://x.com/${company.twitter}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs text-secondary hover:text-accent transition-colors"
+                    >
+                      @{company.twitter}
+                    </a>
+                  </div>
+                </div>
+                <a
+                  href={`https://x.com/${company.twitter}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block text-sm text-secondary hover:text-primary transition-colors"
+                >
+                  View latest posts &rarr;
+                </a>
+              </Card>
+            ))}
+        </div>
+      </section>
     </div>
   );
 }
